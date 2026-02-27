@@ -41,7 +41,7 @@ android {
             resValue("string", "app_name", "Foda Dev")
         }
     }
-
+//ihihoih
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
