@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fodaapp/core/networking/api_constant.dart';
+import 'package:fodaapp/features/Login/data/models/login_reqeust_body.dart';
+import 'package:fodaapp/features/Login/data/models/login_response_body.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 part 'api_service.g.dart';
@@ -9,10 +11,10 @@ abstract class ApiService {
   factory ApiService(Dio dio, {String? baseUrl}) = _ApiService;
 
   
-  // @POST(ApiConstant.login)
-  // Future<LoginResponse> login(
-  //   @Body() LoginReqeustBody loginRequestBody,
-  // );
+  @POST(ApiConstant.login)
+  Future<LoginResponseBody> login(
+    @Body() LoginReqeustBody loginRequestBody,
+  );
 
   // @POST(ApiConstant.signup)
   // Future<SignUpResponse> signup(

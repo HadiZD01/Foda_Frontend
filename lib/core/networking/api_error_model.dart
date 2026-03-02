@@ -1,26 +1,27 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'api_error_model.g.dart';
+
+@JsonSerializable()
+class ApiResponse {
+  final bool? success;
+  final ApiErrorModel? error; // هنا يتم استقبال كائن الـ error
+
+  ApiResponse({this.success, this.error});
+
+  factory ApiResponse.fromJson(Map<String, dynamic> json) =>
+      _$ApiResponseFromJson(json);
+}
 
 @JsonSerializable()
 class ApiErrorModel {
   final String? message;
-  final int? code;
-  @JsonKey(name: 'data')
-  final Map<String, dynamic>? errors;
 
-  ApiErrorModel({this.message, this.code, this.errors});
+  ApiErrorModel({this.message});
+
   factory ApiErrorModel.fromJson(Map<String, dynamic> json) =>
       _$ApiErrorModelFromJson(json);
-  Map<String, dynamic> toJson() => _$ApiErrorModelToJson(this);
 
-  String getAllErrorsMessages() {
-    if (errors == null && errors!.isNotEmpty) return message ?? 'Unknown Error';
-    final errorsMessages = errors!.entries
-        .map((entry) {
-          final value = entry.value;
-          return "${value.join(',')}";
-        })
-        .join('\n');
-    return errorsMessages;
-  }
+  // دالة المساعدة الآن أصبحت بسيطة جداً
+  String getAllErrorsMessages() => message ?? "Unknown Error";
 }

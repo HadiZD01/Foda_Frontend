@@ -1,6 +1,6 @@
 class ApiConstant {
-  static const String apiBaseUrl = 'https://vcare.integration25.com/api/';
-  static const String login = 'auth/login';
+  static const String apiBaseUrl = 'https://foda-backend-hyxw.onrender.com/';
+  static const String login = 'api/v1/auth/login';
   static const String signup = 'auth/register';
 
 }

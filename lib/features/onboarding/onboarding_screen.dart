@@ -79,8 +79,8 @@ class OnboardingScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
-              child: InkWell(
-                onTap: () {
+              child: TextButton(
+                onPressed: () {
                   context.pushNamed(Routes.loginscreen);
                 },
                 child: Text(
