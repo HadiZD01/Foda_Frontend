@@ -171,4 +171,23 @@ class TextStyles {
     fontWeight: FontWeightHelper.bold,
     color: ColorsApp.DarkBlue,
   );
+
+  //Foda App
+  static TextStyle font24blacksemibold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsApp.black,
+  );
+
+  static TextStyle font16yellowbold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsApp.yellow,
+  );
+
+  static TextStyle font14blackmedium = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsApp.DarkBlue,
+  );
 }
