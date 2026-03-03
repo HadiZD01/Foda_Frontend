@@ -6,6 +6,9 @@ import 'package:fodaapp/features/Login/logic/cubit/login_cubit.dart';
 import 'package:fodaapp/features/Login/ui/login_screen.dart';
 import 'package:fodaapp/features/home/ui/home_screen.dart';
 import 'package:fodaapp/features/onboarding/onboarding_screen.dart';
+import 'package:fodaapp/features/signup/logic/cubit/signup_cubit.dart';
+import 'package:fodaapp/features/signup/ui/sign_up_screen.dart';
+import 'package:fodaapp/features/signup/ui/widgets/verifeied_email_screen.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -21,6 +24,20 @@ class AppRouter {
         );
       case Routes.homescreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.signupscreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<SignUpCubit>(),
+            child: const SignUpScreen(),
+          ),
+        );
+      case Routes.verifiedemail:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<SignUpCubit>(),
+            child: const VerifeiedEmail(),
+          ),
+        );
       // case Routes.signupscreen:
       //   return MaterialPageRoute(
       //     builder: (_) => BlocProvider(
