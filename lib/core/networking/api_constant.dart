@@ -1,8 +1,9 @@
 class ApiConstant {
-  static const String apiBaseUrl = 'https://foda-backend-hyxw.onrender.com/';
-  static const String login = 'api/v1/auth/login';
-  static const String signup = 'auth/register';
-
+  static const String apiBaseUrl =
+      'https://foda-backend-hyxw.onrender.com/api/v1/';
+  static const String login = 'auth/login';
+  static const String signup = 'auth/customer';
+  static const String verifiedemail = 'auth/verify-email';
 }
 
 class ApiErrors {

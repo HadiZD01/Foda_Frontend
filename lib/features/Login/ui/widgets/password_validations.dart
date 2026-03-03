@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fodaapp/core/helpers/spacing.dart';
 import 'package:fodaapp/core/theming/colors.dart';
@@ -33,25 +32,28 @@ class PasswordValidations extends StatelessWidget {
         buildValidationRow('At least one special character', hasSpecialChar),
         verticalSpace(2),
         buildValidationRow('Minimum 8 characters', hasMinLength),
-        
       ],
     );
   }
 
   buildValidationRow(String text, bool hasValidate) {
     return Row(
+      mainAxisSize: MainAxisSize.max,
       children: [
         CircleAvatar(radius: 2.5, backgroundColor: ColorsApp.gray),
         horizontalSpace(6),
-        Text(
-          text,
-          style: 
-          TextStyles.font13DarkblueRegular.copyWith(
-            decoration: hasValidate ? TextDecoration.lineThrough : TextDecoration.none,
-            color: hasValidate ? ColorsApp.gray : ColorsApp.DarkBlue,
-            decorationThickness: 2,
-            decorationColor: Colors.green,
-          )
+        Expanded(
+          child: Text(
+            text,
+            style: TextStyles.font13DarkblueRegular.copyWith(
+              decoration: hasValidate
+                  ? TextDecoration.lineThrough
+                  : TextDecoration.none,
+              color: hasValidate ? ColorsApp.gray : ColorsApp.DarkBlue,
+              decorationThickness: 2,
+              decorationColor: Colors.green,
+            ),
+          ),
         ),
       ],
     );

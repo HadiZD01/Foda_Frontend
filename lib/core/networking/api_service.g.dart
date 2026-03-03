@@ -12,7 +12,7 @@ part of 'api_service.dart';
 
 class _ApiService implements ApiService {
   _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
-    baseUrl ??= 'https://foda-backend-hyxw.onrender.com/';
+    baseUrl ??= 'https://foda-backend-hyxw.onrender.com/api/v1/';
   }
 
   final Dio _dio;
@@ -32,7 +32,7 @@ class _ApiService implements ApiService {
       Options(method: 'POST', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'api/v1/auth/login',
+            'auth/login',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -42,6 +42,64 @@ class _ApiService implements ApiService {
     late LoginResponseBody _value;
     try {
       _value = LoginResponseBody.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<SignupResponseBody> signup(SignupReqeustBody signUpReqeustBody) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(signUpReqeustBody.toJson());
+    final _options = _setStreamType<SignupResponseBody>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'auth/customer',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late SignupResponseBody _value;
+    try {
+      _value = SignupResponseBody.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options, response: _result);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<VerifiedEmailResponseBody> verfiedEmail(
+    VerifiedEmailReqeustBody verifiedEmailReqeustBody,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(verifiedEmailReqeustBody.toJson());
+    final _options = _setStreamType<VerifiedEmailResponseBody>(
+      Options(method: 'POST', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'auth/verify-email',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late VerifiedEmailResponseBody _value;
+    try {
+      _value = VerifiedEmailResponseBody.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options, response: _result);
       rethrow;

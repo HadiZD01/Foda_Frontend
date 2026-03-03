@@ -128,7 +128,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fodaapp/core/helpers/extensions.dart';
 import 'package:fodaapp/core/helpers/spacing.dart';
+import 'package:fodaapp/core/routing/routes.dart';
 import 'package:fodaapp/core/theming/colors.dart';
 import 'package:fodaapp/core/theming/styles.dart';
 import 'package:fodaapp/features/Login/logic/cubit/login_cubit.dart';
@@ -142,7 +144,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color.fromARGB(255, 220, 217, 217),
       // نستخدم Scaffold بدون SafeArea في البداية لتغطية الشاشة بالكامل
       body: SingleChildScrollView(
         child: SizedBox(
@@ -157,7 +159,7 @@ class LoginScreen extends StatelessWidget {
                 right: 0,
                 height:
                     MediaQuery.of(context).size.height *
-                    0.5, // تأخذ نصف الشاشة تقريباً
+                    0.6, // تأخذ نصف الشاشة تقريباً
                 child: Image.asset(
                   'assets/images/Header_Image_Section.png',
                   fit: BoxFit.cover,
@@ -231,7 +233,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              // التنقل لصفحة التسجيل
+                              context.pushNamed(Routes.signupscreen);
                             },
                             child: Text(
                               "Sign Up",

@@ -190,4 +190,16 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: ColorsApp.DarkBlue,
   );
+
+  static TextStyle font36blackbold = TextStyle(
+    fontSize: 36.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: ColorsApp.BlackNew,
+  );
+
+  static TextStyle font14graymedium = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: ColorsApp.NewGray,
+  );
 }

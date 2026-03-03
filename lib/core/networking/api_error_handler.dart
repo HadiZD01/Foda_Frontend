@@ -39,7 +39,6 @@ class ApiErrorHandler {
 ApiErrorModel _handleError(dynamic data) {
   // 1. التأكد أولاً أن البيانات القادمة هي Map (JSON) وليست نصاً عادياً أو HTML
   if (data is Map<String, dynamic>) {
-    
     // 2. إذا كان الـ JSON يحتوي على مفتاح 'error' وهو بدوره Map (كما في مثالك)
     if (data['error'] is Map<String, dynamic>) {
       return ApiErrorModel.fromJson(data['error']);
@@ -52,5 +51,5 @@ ApiErrorModel _handleError(dynamic data) {
   }
 
   // 4. حالة احتياطية إذا كان شكل الرد غير متوقع تماماً
-  return ApiErrorModel(message:"Uknow Error");
+  return ApiErrorModel(message: "Uknow Error");
 }

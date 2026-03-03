@@ -12,18 +12,22 @@ class FodaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
+      designSize: const Size(390, 884), // تأكد أن هذا هو مقاس التصميم في Figma
       minTextAdapt: true,
-      // نستخدم الـ builder هنا لضمان تمرير الـ Context بشكل سليم
+      splitScreenMode: true, // أضف هذا السطر لتحسين الاستجابة
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
 
-          // --- إعدادات Device Preview الأساسية ---
-          useInheritedMediaQuery: true, // مهم جداً لاستجابة التصميم
-          locale: DevicePreview.locale(context), // لتغيير لغة المحاكي
-          builder: DevicePreview.appBuilder, // لبناء إطار الجهاز حول التطبيق
-          // ---------------------------------------
+          // إعدادات Device Preview
+          // useInheritedMediaQuery: true,
+          locale: DevicePreview.locale(context),
+          builder: (context, widget) {
+            // نقوم بدمج الـ builder الخاص بـ DevicePreview مع ScreenUtil
+            widget = DevicePreview.appBuilder(context, widget);
+            return widget;
+          },
+
           theme: ThemeData(
             primaryColor: ColorsApp.mainblue,
             scaffoldBackgroundColor: Colors.white,
