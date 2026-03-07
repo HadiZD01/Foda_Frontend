@@ -4,6 +4,7 @@ class ApiConstant {
   static const String login = 'auth/login';
   static const String signup = 'auth/customer';
   static const String verifiedemail = 'auth/verify-email';
+  static const String products = 'products';
 }
 
 class ApiErrors {

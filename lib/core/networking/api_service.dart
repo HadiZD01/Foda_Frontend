@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:fodaapp/core/networking/api_constant.dart';
 import 'package:fodaapp/features/Login/data/models/login_reqeust_body.dart';
 import 'package:fodaapp/features/Login/data/models/login_response_body.dart';
+import 'package:fodaapp/features/home/data/models/products_response_model.dart';
 import 'package:fodaapp/features/signup/data/models/signup_reqeust_body.dart';
 import 'package:fodaapp/features/signup/data/models/signup_response_body.dart';
 import 'package:retrofit/error_logger.dart';
@@ -24,4 +25,7 @@ abstract class ApiService {
   Future<VerifiedEmailResponseBody> verfiedEmail(
     @Body() VerifiedEmailReqeustBody verifiedEmailReqeustBody,
   );
+
+  @GET(ApiConstant.products)
+  Future<ProductsResponseModel> getProducts();
 }

@@ -4,6 +4,7 @@ import 'package:fodaapp/core/di/dependency_injection.dart';
 import 'package:fodaapp/core/routing/routes.dart';
 import 'package:fodaapp/features/Login/logic/cubit/login_cubit.dart';
 import 'package:fodaapp/features/Login/ui/login_screen.dart';
+import 'package:fodaapp/features/home/logic/cubit/home_products_cubit.dart';
 import 'package:fodaapp/features/home/ui/home_screen.dart';
 import 'package:fodaapp/features/onboarding/onboarding_screen.dart';
 import 'package:fodaapp/features/signup/logic/cubit/signup_cubit.dart';
@@ -23,7 +24,12 @@ class AppRouter {
           ), // أضفنا كلمة return هنا
         );
       case Routes.homescreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<HomeProductsCubit>()..emitProductData(),
+            child: const HomeScreen(),
+          ),
+        );
       case Routes.signupscreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
