@@ -202,4 +202,22 @@ class TextStyles {
     fontWeight: FontWeightHelper.medium,
     color: ColorsApp.NewGray,
   );
+
+  static TextStyle font32blackbold = TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsApp.black,
+  );
+
+  static TextStyle font20BlackBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsApp.black,
+  );
+
+  static TextStyle font15yellowbold = TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: ColorsApp.yellow,
+  );
 }

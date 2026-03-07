@@ -3,6 +3,8 @@ import 'package:fodaapp/core/networking/api_service.dart';
 import 'package:fodaapp/core/networking/dio_factory.dart';
 import 'package:fodaapp/features/Login/data/repos/login_repo.dart';
 import 'package:fodaapp/features/Login/logic/cubit/login_cubit.dart';
+import 'package:fodaapp/features/home/data/repos/products_repos.dart';
+import 'package:fodaapp/features/home/logic/cubit/home_products_cubit.dart';
 import 'package:fodaapp/features/signup/data/repos/sign_up_repo.dart';
 import 'package:fodaapp/features/signup/logic/cubit/signup_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -23,10 +25,9 @@ Future<void> setupDependencyInjection() async {
   getIt.registerSingleton<SignUpRepo>(SignUpRepo(getIt()));
   getIt.registerSingleton<VerifiedEmailRepo>(VerifiedEmailRepo(getIt()));
 
-  getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt(),getIt()));
+  getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt(), getIt()));
 
   //for Home
-  // getIt.registerSingleton<HomeApiService>(HomeApiService(dio));
-  // getIt.registerSingleton<HomeRepo>(HomeRepo(getIt()));
-  // getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));
+  getIt.registerSingleton<HomeProductsRepos>(HomeProductsRepos(getIt()));
+  getIt.registerFactory<HomeProductsCubit>(() => HomeProductsCubit(getIt()));
 }
