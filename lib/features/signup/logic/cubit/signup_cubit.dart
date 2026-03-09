@@ -25,6 +25,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController passwordConfirmationController =
       TextEditingController();
   TextEditingController verificationCodeController = TextEditingController();
+  int get codeAsInt => int.tryParse(verificationCodeController.text) ?? 0;
   final formkey = GlobalKey<FormState>();
 
   void emitSignUpState() async {
@@ -52,12 +53,12 @@ class SignUpCubit extends Cubit<SignUpState> {
     }
   }
 
-  void emitVerifiedEmail() async {
+  void emitVerifiedEmail({required String email}) async {
     emit(SignUpState.signUploading());
     final response = await _verifiedEmailRepo.verifiedEmail(
       VerifiedEmailReqeustBody(
-        email: emailController.text,
-        verificationCode: verificationCodeController.text,
+        email: email,
+        verificationCode: codeAsInt,
       ),
     );
     response.when(

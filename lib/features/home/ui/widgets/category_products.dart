@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fodaapp/core/helpers/spacing.dart';
+import 'package:fodaapp/core/theming/colors.dart';
 import 'package:fodaapp/core/theming/styles.dart';
 import 'package:fodaapp/features/home/logic/cubit/home_products_cubit.dart';
 
@@ -69,7 +70,7 @@ class _MyWidgetState extends State<CategoryProducts> {
   ) {
     return TextButton(
       style: TextButton.styleFrom(
-        backgroundColor: isSelected ? Colors.white : Colors.grey[200],
+        backgroundColor: isSelected ? ColorsApp.yellow : Colors.grey[200],
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       ),
@@ -77,7 +78,7 @@ class _MyWidgetState extends State<CategoryProducts> {
       child: Text(
         title,
         style: isSelected
-            ? TextStyles.font14blackmedium
+            ? TextStyles.font14blackmedium.copyWith(color: Colors.white)
             : TextStyles.font14graymedium,
       ),
     );

@@ -3,6 +3,7 @@ import 'package:fodaapp/core/networking/api_constant.dart';
 import 'package:fodaapp/features/Login/data/models/login_reqeust_body.dart';
 import 'package:fodaapp/features/Login/data/models/login_response_body.dart';
 import 'package:fodaapp/features/home/data/models/products_response_model.dart';
+import 'package:fodaapp/features/profile/data/models/profile_data_response_body.dart';
 import 'package:fodaapp/features/signup/data/models/signup_reqeust_body.dart';
 import 'package:fodaapp/features/signup/data/models/signup_response_body.dart';
 import 'package:retrofit/error_logger.dart';
@@ -16,7 +17,7 @@ abstract class ApiService {
   @POST(ApiConstant.login)
   Future<LoginResponseBody> login(@Body() LoginReqeustBody loginRequestBody);
 
-  @POST(ApiConstant.signup)
+  @POST(ApiConstant.signupCustomer)
   Future<SignupResponseBody> signup(
     @Body() SignupReqeustBody signUpReqeustBody,
   );
@@ -24,8 +25,12 @@ abstract class ApiService {
   @POST(ApiConstant.verifiedemail)
   Future<VerifiedEmailResponseBody> verfiedEmail(
     @Body() VerifiedEmailReqeustBody verifiedEmailReqeustBody,
+    
   );
 
   @GET(ApiConstant.products)
   Future<ProductsResponseModel> getProducts();
+
+    @GET(ApiConstant.profile)
+  Future<ProfileDataResponseBody> getProfile();
 }

@@ -33,7 +33,12 @@ class SignupBlocListener extends StatelessWidget {
           },
           signUpSuccess: (signUpResponse) {
             context.pop();
-            showSuccessDialog(context, signUpResponse.message, 'Verifey');
+            showSuccessDialog(
+              context,
+              signUpResponse.message,
+              'Verifey',
+              context.read<SignUpCubit>().emailController.text,
+            );
           },
           signUpFailure: (apiErrorModel) {
             setupErrorState(context, apiErrorModel);
@@ -44,6 +49,7 @@ class SignupBlocListener extends StatelessWidget {
               context,
               verifiedEmailResponseBody.message,
               'Home',
+              '',
             );
           },
           verifeyEmailFailure: (apiErrorModel) {
@@ -59,6 +65,7 @@ class SignupBlocListener extends StatelessWidget {
     BuildContext context,
     String message,
     String targetRoute,
+    String email,
   ) {
     showDialog(
       context: context,
@@ -77,8 +84,8 @@ class SignupBlocListener extends StatelessWidget {
               ),
               onPressed: () {
                 targetRoute == 'Home'
-                    ? context.pushNamed(Routes.homescreen)
-                    : context.pushNamed(Routes.verifiedemail);
+                    ? context.pushNamed(Routes.mainscreen)
+                    : context.pushNamed(Routes.verifiedemail, arguments: email);
               },
               child: const Text('Continue'),
             ),

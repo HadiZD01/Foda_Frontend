@@ -10,6 +10,7 @@ class ColorsApp {
   static const Color morelightergray = Color(0xFFF5F5F5);
   static const Color black = Color.fromARGB(240, 22, 17, 1);
   static const Color WhiteBackground = Color.fromARGB(255, 247, 245, 243);
+  // static const Color yellow = Color.fromARGB(255, 201, 168, 76);
   static const Color yellow = Color.fromARGB(255, 201, 168, 76);
   static const Color BlackNew = Color.fromARGB(255, 44, 44, 44);
   static const Color NewGray = Color.fromARGB(255, 107, 114, 128);

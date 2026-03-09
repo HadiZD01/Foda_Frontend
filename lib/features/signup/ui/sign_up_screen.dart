@@ -17,12 +17,21 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorsApp.WhiteBackground,
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back, size: 35, color: ColorsApp.yellow),
-        title: Text('Sign Up'),
+        animateColor: false,
+        surfaceTintColor: ColorsApp.WhiteBackground,
+        backgroundColor: ColorsApp.WhiteBackground,
+        foregroundColor: ColorsApp.WhiteBackground,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, size: 35, color: ColorsApp.yellow),
+          onPressed: () {
+            context.pushReplacementNamed(Routes.loginscreen);
+          },
+        ),
+        title: Text('Sign Up', style: TextStyles.font24blackbold),
         elevation: 0,
-        backgroundColor: Colors.white,
+        // backgroundColor: ColorsApp.WhiteBackground,
         centerTitle: true,
         // foregroundColor: Colors.black,
       ),
@@ -36,13 +45,14 @@ class SignUpScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                verticalSpace(20),
                 Center(
                   child: Image.asset(
                     'assets/images/yellow_line.png',
                     width: 70.w,
                   ),
                 ),
-                verticalSpace(14),
+                verticalSpace(30),
                 Center(
                   child: Text(
                     'Create Your Account',
@@ -64,7 +74,7 @@ class SignUpScreen extends StatelessWidget {
                     context.read<SignUpCubit>().emitSignUpState();
                   },
                   text: 'Sign Up',
-                  styleText: TextStyles.font16yellowbold,
+                  styleText: TextStyles.font16whitemedium,
                 ),
                 verticalSpace(20),
                 Row(
