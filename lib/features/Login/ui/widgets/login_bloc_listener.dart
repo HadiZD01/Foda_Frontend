@@ -31,7 +31,7 @@ class LoginBlocListener extends StatelessWidget {
             // Dismiss loading indicator
             context.pop();
             // Navigate to home screen or another screen
-            context.pushNamed(Routes.homescreen);
+            context.pushNamed(Routes.mainscreen,arguments: loginResponseBody);
           },
           failure: (apiErrorModel) => {
             context.pop(),

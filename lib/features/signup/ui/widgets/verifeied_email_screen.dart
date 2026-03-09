@@ -14,6 +14,8 @@ class VerifeiedEmail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Object? args = ModalRoute.of(context)?.settings.arguments;
+    final String email = args is String ? args : "";
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -57,13 +59,13 @@ class VerifeiedEmail extends StatelessWidget {
                   children: [
                     verticalSpace(20),
                     Text(
-                      'A 4-digit code was sent to your\n email. Please enter it below to verify\nyour account',
+                      'A 4-digit code was sent to your\n email\n ${email}.\n Please enter it below to verify\nyour account',
                       style: TextStyles.font14graymedium,
                       textAlign: TextAlign.center,
                     ),
                     verticalSpace(36),
                     Pinput(
-                      length: 4, // تم التغيير لـ 4 أرقام
+                      length: 6, // تم التغيير لـ 4 أرقام
                       controller: context
                           .read<SignUpCubit>()
                           .verificationCodeController,
@@ -107,22 +109,26 @@ class VerifeiedEmail extends StatelessWidget {
                       // لإظهار لوحة أرقام فقط
                       keyboardType: TextInputType.number,
                       validator: (value) {
-                        if (value == null || value.length < 4) {
-                          return 'Please enter the 4-digit code';
+                        if (value == null || value.length < 6) {
+                          return 'Please enter the 6-digit code';
                         }
                         return null;
                       },
                       onCompleted: (pin) {
-                        context.read<SignUpCubit>().emitVerifiedEmail();
+                        context.read<SignUpCubit>().emitVerifiedEmail(
+                          email: email,
+                        );
                       },
                     ),
                     verticalSpace(30),
                     AppButton(
                       onPressed: () {
-                        context.read<SignUpCubit>().emitVerifiedEmail();
+                        context.read<SignUpCubit>().emitVerifiedEmail(
+                          email: email,
+                        );
                       },
                       text: 'Verify',
-                      styleText: TextStyles.font16yellowbold,
+                      styleText: TextStyles.font16whitemedium,
                     ),
                     verticalSpace(24),
                     Text(
@@ -132,11 +138,16 @@ class VerifeiedEmail extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         // هنا ربما تحتاج ميثود resendCode بدلاً من نفس ميثود التفعيل
-                        context.read<SignUpCubit>().emitVerifiedEmail();
+                        context.read<SignUpCubit>().emitVerifiedEmail(
+                          email: email,
+                        );
                       },
-                      child: Text(
-                        'Resend Code',
-                        style: TextStyles.font16yellowbold,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Resend Code',
+                          style: TextStyles.font16yellowbold,
+                        ),
                       ),
                     ),
                     verticalSpace(

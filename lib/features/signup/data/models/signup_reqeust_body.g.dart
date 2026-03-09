@@ -24,7 +24,7 @@ VerifiedEmailReqeustBody _$VerifiedEmailReqeustBodyFromJson(
   Map<String, dynamic> json,
 ) => VerifiedEmailReqeustBody(
   email: json['email'] as String?,
-  verificationCode: json['verificationCode'] as String?,
+  verificationCode: (json['verificationCode'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$VerifiedEmailReqeustBodyToJson(

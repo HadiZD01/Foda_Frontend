@@ -32,7 +32,7 @@ class FodaApp extends StatelessWidget {
             primaryColor: ColorsApp.mainblue,
             scaffoldBackgroundColor: Colors.white,
           ),
-          initialRoute: Routes.homescreen,
+          initialRoute: Routes.profilescreen,
           onGenerateRoute: appRouter.generateRoute,
         );
       },

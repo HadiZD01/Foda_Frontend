@@ -8,7 +8,6 @@ import 'package:fodaapp/features/Login/data/repos/login_repo.dart';
 import 'package:fodaapp/features/Login/logic/cubit/login_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepo _loginRepo;
 
@@ -20,15 +19,16 @@ class LoginCubit extends Cubit<LoginState> {
 
   void emitLoginState() async {
     emit(LoginState.loading());
-    final result =await _loginRepo.login(
+    final result = await _loginRepo.login(
       LoginReqeustBody(
         email: emailController.text,
         password: passwordController.text,
       ),
     );
-  result.when(
+    result.when(
       success: (loginResponseBody) async {
         await saveUserToken(loginResponseBody.accessToken);
+        loginResponseBodySaved = loginResponseBody;
         emit(LoginState.success(loginResponseBody));
       },
       failure: (apiErrorModel) {
@@ -41,5 +41,4 @@ class LoginCubit extends Cubit<LoginState> {
     await SharedPrefHelper.setSecuredString(SharedPrefKeys.userToken, token);
     DioFactory.setTokenAfterLogin(token);
   }
-  
 }

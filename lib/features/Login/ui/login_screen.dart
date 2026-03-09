@@ -144,59 +144,45 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 220, 217, 217),
+      backgroundColor: ColorsApp.WhiteBackground,
       // نستخدم Scaffold بدون SafeArea في البداية لتغطية الشاشة بالكامل
-      body: SingleChildScrollView(
-        child: SizedBox(
-          // نجعل الارتفاع يساوي ارتفاع الشاشة بالكامل
-          // height: MediaQuery.of(context).size.height.h,
-          child: Stack(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
             children: [
-              // 1. صورة الخلفية (تأخذ الجزء العلوي)
-              Positioned(
-                top: 0,
-                left: 0,
-                right: 0,
-                height:
-                    MediaQuery.of(context).size.height *
-                    0.6, // تأخذ نصف الشاشة تقريباً
-                child: Image.asset(
-                  'assets/images/Header_Image_Section.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-
-              // 2. الحاوية البيضاء (الفورم)
-              Align(
-                alignment: Alignment.bottomCenter,
+              Center(
                 child: Container(
-                  width: 340.w,
-                  // نتحكم في المسافة من الأعلى لتبدأ الحاوية من مكان مناسب
-                  margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.4,
+                  margin: EdgeInsets.symmetric(
+                    // vertical: 20.h,
+                    horizontal: 20.w,
                   ),
+                  width: double.infinity,
                   padding: EdgeInsets.symmetric(
                     horizontal: 24.w,
-                    vertical: 30.h,
+                    // vertical: 30.h,
                   ),
-                  decoration: BoxDecoration(
-                    color: ColorsApp.WhiteBackground,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(32.r),
-                      topRight: Radius.circular(32.r),
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 10,
-                        offset: const Offset(0, -5),
-                      ),
-                    ],
-                  ),
+                  // decoration: BoxDecoration(
+                  //   color: ColorsApp.WhiteBackground,
+                  //   borderRadius: BorderRadius.only(
+                  //     topLeft: Radius.circular(32.r),
+                  //     topRight: Radius.circular(32.r),
+                  //     bottomLeft: Radius.circular(32.r),
+                  //     bottomRight: Radius.circular(32.r),
+                  //   ),
+                  //   boxShadow: [
+                  //     BoxShadow(
+                  //       color: Colors.black.withOpacity(0.1),
+                  //       blurRadius: 10,
+                  //       offset: const Offset(0, -5),
+                  //     ),
+                  //   ],
+                  // ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Image.asset('assets/images/Foda_Logo.png'),
+
                       Center(
                         child: Column(
                           children: [
@@ -221,7 +207,7 @@ class LoginScreen extends StatelessWidget {
                           validateThenDoLogin(context);
                         },
                         text: 'Sign In',
-                        styleText: TextStyles.font16yellowbold,
+                        styleText: TextStyles.font16whitemedium,
                       ),
                       verticalSpace(20),
                       Row(

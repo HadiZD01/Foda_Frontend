@@ -7,7 +7,14 @@ class AppButton extends StatelessWidget {
   void Function()? onPressed;
   String text;
   TextStyle styleText;
-  AppButton({super.key, required this.onPressed, required this.text,required this.styleText});
+  Color? color;
+  AppButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    required this.styleText,
+    this.color,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +23,9 @@ class AppButton extends StatelessWidget {
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         ),
-        backgroundColor: WidgetStateProperty.all<Color>(ColorsApp.black),
+        backgroundColor: WidgetStateProperty.all<Color>(
+          color ?? ColorsApp.yellow,
+        ),
         padding: WidgetStateProperty.all<EdgeInsetsGeometry>(
           EdgeInsets.symmetric(vertical: 12.w, horizontal: 14.h),
         ),

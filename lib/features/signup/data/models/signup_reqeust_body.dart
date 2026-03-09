@@ -19,7 +19,7 @@ class SignupReqeustBody {
 @JsonSerializable()
 class VerifiedEmailReqeustBody {
   final String? email;
-  final String? verificationCode;
+  final int? verificationCode;
 
   VerifiedEmailReqeustBody({
     required this.email,
